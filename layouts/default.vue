@@ -8,7 +8,7 @@
     <main class="default-main container-require">
       <Nuxt />
 
-      <div :hidden="arrowToUpFlag" class="arrow-to-up">
+      <div :hidden="arrowToUpFlag" class="arrow-to-up" v-if="clientWidth >= 426">
         <a href="#top"><img src="@/assets/arrow-to-up.svg" alt="Подняться вверх" width="65" height="65"></a>
       </div>
     </main>
@@ -71,13 +71,16 @@ html {
     'Helvetica Neue',
     Arial,
     sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
+    font-size: 16px;
+    word-spacing: 1px;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+}
+
+html, body {
 }
 
 *,
@@ -104,14 +107,15 @@ a:active {
 }
 
 .default-main {
-  min-height: 500px;
 }
   .arrow-to-up { position: fixed; bottom: 30px; right: 30px; }
 
 .default-footer {
   background-color: #262E39;
-  min-height: 300px;
+  min-height: 50px;
   padding: 45px 0px 35px 0px;
+
+  overflow-y: auto;
 }
 
 .visuallyHidden {
@@ -149,5 +153,8 @@ a:active {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+
+@media screen and (max-width: 425px) {
 }
 </style>

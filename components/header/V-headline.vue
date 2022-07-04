@@ -1,6 +1,6 @@
 <template>
   <section id="headline" class="headline-list">
-    <div v-if="clientWidth >= 426" class="headline-list__item">
+    <div class="headline-list__item" v-if="clientWidth >= 426">
       <ul>
         <li>
           <img src="@/assets/mobile.svg" alt="mobile-svg">
@@ -13,7 +13,7 @@
       </ul>
     </div>
 
-    <div class="headline-list__item">
+    <div class="headline-list__item" v-if="clientWidth >= 426">
       <ul>
         <li>
           <img src="@/assets/vk.svg" alt="mobile-svg" width="27" height="27">
@@ -67,8 +67,7 @@ ul li {
 
 @media screen and (max-width: 425px) {
   #headline {
-    height: 70px;
-    background-color: rgba(38, 46, 57, 1);
+    background-color: rgba(38, 46, 57, 0);
   }
 }
 </style>

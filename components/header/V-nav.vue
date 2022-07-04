@@ -1,11 +1,11 @@
 <template>
   <section id="nav">
-    <section v-bind:class="{container: navFlag, navTransformed: !navFlag}" class="nav-list">
+    <div v-if="clientWidth >= 426" v-bind:class="{container: navFlag, navTransformed: !navFlag}" class="nav-list">
       <div class="nav-list__item logo">
         <nuxt-link to="/"><img class="logo" name="top" src="@/assets/logo-group-big.svg" alt="logo"></nuxt-link>
       </div>
 
-      <div v-if="clientWidth >= 426" class="nav-list__item menu">
+      <div class="nav-list__item menu">
         <ul class="menu__list">
           <li class="menu__list__item">
             <b-dropdown size="sm" variant="none" no-caret>
@@ -47,9 +47,6 @@
           </li>
         </ul>
       </div>
-      <div v-else>
-        <h1>sdf</h1>
-      </div>
 
       <div class="nav-list__item profile" v-if="false">
         <ul>
@@ -87,12 +84,30 @@
           </li>
         </ul>
       </div>
-    </section>
+    </div>
+    
+    <div v-else class="mobile-nav"> 
+      
+      <div class="mobile-nav__list">
+        <div class="mobile-nav__list__logo">
+          <nuxt-link to="/"><img class="logo" name="top" src="@/assets/logo-group-big.svg" alt="logo"></nuxt-link>
+        </div>
+        <div class="mobile-nav__list__burger">
+          <VBurger />
+        </div>
+      </div>
+
+    </div>
   </section>
 </template>
 
 <script>
+import VBurger from "@/components/header/V-burger.vue"
+
 export default {
+  components: {
+    VBurger
+  },
   data () {
     return {
       clientWidth: null,
@@ -179,41 +194,26 @@ svg { fill: white; }
 
 
 @media screen and (max-width: 425px) {
-  .logo {
-    position: absolute;
-    top: 50px;
-    left: 5px;
-    width: 219px;
-    height: 51px;
-  }
-  #nav {
-    padding: none;
-    height: none;
-    border-bottom: none;
-  }
-  .navTransformed {
+  .mobile-nav {
     position: fixed;
     top: 0px;
     left: 0px;
+    background-color: #262E39;
     height: 70px;
-    background-color: rgba(38, 46, 57, 1);
-    color: white;
-    z-index: 100;
-
-    transition: 0.5s;
-  }
-    .navTransformed .logo { top: 5px; }
-    .navTransformed h1 { color: white; }
-
-  .nav-list {
-    display: flex;
-    flex-direction: row-reverse;
-    flex-wrap: nowrap;
     width: 100%;
-    align-items: center;
-    color: white;
-
-    transition: 0.5s;
   }
+    .mobile-nav__list {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+    }
+      .mobile-nav__list__logo img {
+        width: 220px;
+        height: 50px;
+      }
+
+      .mobile-nav__list__burger {
+      }
 }
 </style>

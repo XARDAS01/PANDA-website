@@ -66,4 +66,10 @@
     .introduction__item p {
       width: 250px;
     }
+
+  @media screen and (max-width: 425px) {
+    .introduction {
+      height: 630px
+    }
+  }
 </style>

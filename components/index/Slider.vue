@@ -61,6 +61,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    width: 100%;
   }
     .slider__item {
       width: 50%;
@@ -72,4 +73,17 @@
     .slide__name { font-size: 18px; text-align: left; }
     .slide__title { font-size: 36px; text-align: left; }
     .slide__text { font-size: 14px; padding-top: 25px; }
+
+  @media screen and (max-width: 425px) {
+    #Slider {
+      flex-direction: column;
+    }
+      .slider__item {
+        width: 100%;
+      }
+
+      img { max-width: 50px; }
+
+      .slide { height: 650px; margin-top: -7px; }
+  }
 </style>

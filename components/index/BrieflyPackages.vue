@@ -36,10 +36,11 @@ import VbrieflyCard from "./../../components/Kit-card/briefly-kit.vue"
 
 export default {
   components: {
-    VbrieflyCard,
+    VbrieflyCard
   },
   data() {
     return {
+      clientWidth: null,
       brieflyKits: [
         {
           id: 1,
@@ -77,6 +78,9 @@ export default {
         }
       ]
     }
+  },
+  mounted() {
+    this.clientWidth = document.documentElement.clientWidth;
   }
 }
 </script>

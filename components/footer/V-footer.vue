@@ -5,7 +5,7 @@
         <img src="@/assets/logo-group.svg" alt=""><br><br>
         <nuxt-link class="footer__item__politicy" to="/">Политика конфиденциальности</nuxt-link>
       </div>
-      <div class="footer__item">
+      <div class="footer__item" v-if="clientWidth >= 426">
         <p>Мы в соцсетях:</p>
         <ul>
           <li>
@@ -22,7 +22,7 @@
           </li>
         </ul>
       </div>
-      <div class="footer__item">
+      <div class="footer__item" v-if="clientWidth >= 426">
         <p>Контакты:</p>
         <ul>
           <li>
@@ -47,7 +47,14 @@
 
 <script>
 export default {
-
+  data() {
+    return {
+      clientWidth: null
+    }
+  },
+  mounted() {
+    this.clientWidth = document.documentElement.clientWidth;
+  }
 }
 </script>
 
@@ -79,4 +86,18 @@ export default {
 a {
   font-size: 18px;
 }
+
+  @media screen and (max-width: 425px) {
+    .footer {
+      height: 80px;
+    }
+    
+    .footer__item {
+      text-align: center;
+    }
+
+    .copyright {
+      margin-top: 50px;
+    }
+  }
 </style>
